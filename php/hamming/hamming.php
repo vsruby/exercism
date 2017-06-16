@@ -7,7 +7,20 @@
 
 function distance($a, $b)
 {
-    //
-    // YOUR CODE GOES HERE
-    //
+    $distance = 0;
+
+    //Check lengths and throw exception if they are not equal
+    if (strlen($a) !== strlen($b)) {
+        throw new InvalidArgumentException('DNA strands must be of equal length.');
+    }
+
+    //Only try to count hamming distance if content of strings do not match
+    if (!!strcmp($a, $b)) {
+        //Count hamming distance
+        for ($i = 0; $i < strlen($a); $i++) {
+            $distance += $a[$i] !== $b[$i] ? 1 : 0;
+        }
+    }
+
+    return $distance;
 }
